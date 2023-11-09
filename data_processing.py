@@ -178,3 +178,28 @@ print(f"The average number of passes made by forwards {forwards.aggregate(lambda
 mids = my_player.filter(lambda x: x['position'] == 'midfielder')
 print(f"The average number of passes made by midfielders {mids.aggregate(lambda x: sum(x)/len(x), 'passes')}")
 
+my_titan = my_DB.search('titanic')
+
+first_class = my_titan.filter(lambda x: x['class'] == '1')
+print()
+print(f"The average fare paid by passengers in the first class \
+{first_class.aggregate(lambda x: sum(x)/len(x), 'fare')}")
+
+ะ้รพก_class = my_titan.filter(lambda x: x['class'] == '3')
+print(f"The average fare paid by passengers in the third class \
+{ะ้รพก_class.aggregate(lambda x: sum(x)/len(x), 'fare')}")
+
+print(my_titan)
+female = my_titan.filter(lambda x: x['gender'] == 'F')
+female_sur = my_titan.filter(lambda x: x['gender'] == 'F').filter(lambda x: x['survived'] == 'yes')
+
+female_len = len(female.table)
+female_sur_len = len(female_sur.table)
+print(f"The survival rate of female {(female_sur_len/female_len)*100}%")
+
+male = my_titan.filter(lambda x: x['gender'] == 'M')
+male_sur = my_titan.filter(lambda x: x['gender'] == 'M').filter(lambda x: x['survived'] == 'yes')
+
+male_len = len(male.table)
+male_sur_len = len(male_sur.table)
+print(f"The survival rate of male {(male_sur_len/male_len)*100}%")
