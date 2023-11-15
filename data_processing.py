@@ -203,3 +203,7 @@ male_sur = my_titan.filter(lambda x: x['gender'] == 'M').filter(lambda x: x['sur
 male_len = len(male.table)
 male_sur_len = len(male_sur.table)
 print(f"The survival rate of male {(male_sur_len/male_len)*100}%")
+
+male_for_boss = my_titan.filter(lambda x: x['gender'] == 'M').filter(lambda x: x['embarked'] == 'Southampton')
+print(male_for_boss)
+
